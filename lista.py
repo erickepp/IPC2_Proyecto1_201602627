@@ -63,6 +63,12 @@ class Lista:
                     aux = aux.siguiente
                 aux.valor = valor
 
+    def __iter__(self):
+        actual = self.__inicio
+        while actual is not None:
+            yield actual.valor
+            actual = actual.siguiente
+
     class __Nodo:
         def __init__(self, valor):
             self.valor = valor

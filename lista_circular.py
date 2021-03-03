@@ -33,6 +33,15 @@ class ListaCircular:
         else:
             raise IndexError('list index out of range')
 
+    def __iter__(self):
+        actual = self.__inicio
+        while actual is not None:
+            yield actual.valor
+            if actual != self.__fin:
+                actual = actual.siguiente
+            else:
+                actual = None
+
     class __Nodo:
         def __init__(self, valor):
             self.valor = valor
