@@ -28,7 +28,7 @@ class Lista:
                 aux = self.__inicio.valor
                 for i in range(posicion):
                     aux = aux.siguiente
-                return aux.siguiente
+                return aux.valor
         else:
             raise IndexError('list index out of range')
 
