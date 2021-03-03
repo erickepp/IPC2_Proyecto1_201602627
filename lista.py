@@ -53,6 +53,16 @@ class Lista:
         else:
             raise IndexError('list index out of range')
 
+    def editar_por_posicion(self, posicion, valor):
+        if posicion >=0 and posicion < self.__tamanio:
+            if posicion == 0:
+                self.__inicio.valor = valor
+            else:
+                aux = self.__inicio
+                for i in range(posicion):
+                    aux = aux.siguiente
+                aux.valor = valor
+
     class __Nodo:
         def __init__(self, valor):
             self.valor = valor
