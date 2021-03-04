@@ -1,5 +1,14 @@
 from lista import Lista
 
+class Matriz:
+    def __init__(self, nombre):
+        self.__nombre = nombre
+        self.__grupos = Lista()
+        self.__datos = Lista()
+        self.__filas = 0
+        self.__columnas = 0
+
+
 def generar_frecuencia(elem):
     frecuencia = Lista()
     for i in range(int(elem.attrib['n'])):
