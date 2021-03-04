@@ -23,6 +23,18 @@ class Matriz:
                         grupo.agregar_al_final(frecuencia.get_valor(j))
                 self.__grupos.agregar_al_final(grupo)
 
+    def sumar_tuplas(self, frecuencia, binaria):
+        self.__generar_grupos(frecuencia, binaria)
+        columnas = self.__grupos.get_valor(0).get_valor(0).get_tamanio()
+        for grupo in self.__grupos:
+            nueva_tupla = Lista()
+            for i in range(columnas):
+                suma = 0
+                for tupla in grupo:
+                    suma += tupla.get_valor(i)
+                nueva_tupla.agregar_al_final(suma)
+            self.__datos.agregar_al_final(nueva_tupla)
+
 
 def generar_frecuencia(elem):
     frecuencia = Lista()
