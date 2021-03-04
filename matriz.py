@@ -1,4 +1,5 @@
 from lista import Lista
+from graphviz import Digraph
 from xml.dom import minidom
 import xml.etree.ElementTree as ET
 
@@ -64,9 +65,31 @@ class Matriz:
             frecuencia.set('g', str(n_grupo))
             frecuencia.text = str(grupo.get_tamanio())
 
-        dom = minidom.parseString(Et.tostring(matriz, 'utf-8'))
+        dom = minidom.parseString(ET.tostring(matriz, 'utf-8'))
         with open(path, 'w') as f:
             f.write(dom.toprettyxml())
+
+    def generar_grafica(self):
+        g = Digraph('G', filename='grafica.gv', format='png')
+        g.edge('Matrices', self.__nombre)
+        g.attr('node', shape='doublecircle', color='blue')
+        g.edge(self.__nombre, 'n = ' + str(self.__filas))
+        g.edge(self.__nombre, 'm = ' + str(self.__columnas))
+        g.attr('node', shape='oval', color='black')
+
+        for fila in self.__datos:
+            n_fila = self.__datos.get_posicion(fila)
+            n_columna = 0
+            for columna in fila:
+                g.node(str(n_fila) + str(n_columna), label=str(columna))
+                n_columna += 1
+        for i in range(self.__columnas):
+            for j in range(self.__filas):
+                if j == 0:
+                    g.edge(self.__nombre, str(j) + str(i))
+                else:
+                    g.edge(str(j - 1) + str(i), str(j) + str(i))
+        g.view()
 
 
 def generar_frecuencia(elem):
