@@ -1,4 +1,6 @@
 from lista import Lista
+from xml.dom import minidom
+import xml.etree.ElementTree as ET
 
 class Matriz:
     def __init__(self, nombre):
@@ -39,6 +41,32 @@ class Matriz:
                 nueva_tupla.agregar_al_final(suma)
             self.__datos.agregar_al_final(nueva_tupla)
         self.__calcular_dimensiones()
+
+    def generar_xml(self, path):
+        matriz = ET.Element('matriz')
+        matriz.set('nombre', self.__nombre + '_Salida')
+        matriz.set('n', str(self.__filas))
+        matriz.set('m', str(self.__columnas))
+        matriz.set('g', str(self.__grupos.get_tamanio()))
+
+        for fila in self.__datos:
+            n_fila = self.__datos.get_posicion(fila) + 1
+            n_columna = 1
+            for columna in fila:
+                dato = ET.SubElement(matriz, 'dato')
+                dato.set('x', str(n_fila))
+                dato.set('y', str(n_columna))
+                dato.text = str(columna)
+                n_columna += 1
+        for grupo in self.__grupos:
+            n_grupo = self.__grupos.get_posicion(grupo) + 1
+            frecuencia = ET.SubElement(matriz, 'frecuencia')
+            frecuencia.set('g', str(n_grupo))
+            frecuencia.text = str(grupo.get_tamanio())
+
+        dom = minidom.parseString(Et.tostring(matriz, 'utf-8'))
+        with open(path, 'w') as f:
+            f.write(dom.toprettyxml())
 
 
 def generar_frecuencia(elem):
