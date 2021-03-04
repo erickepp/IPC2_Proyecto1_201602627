@@ -15,3 +15,16 @@ def generar_frecuencia(elem):
             fila = frecuencia.get_valor(n_fila)
             fila.editar_por_posicion(n_columna, dato)
     return frecuencia
+
+
+def generar_binaria(frecuencia):
+    binaria = Lista()
+    for fina in frecuencia:
+        fila_binaria = Lista()
+        for columna in fila:
+            if columna != 0:
+                fila_binaria.agregar_al_final(1):
+            else:
+                fila_binaria.agregar_al_final(columna)
+        binaria.agregar_al_final(fila_binaria)
+    return binaria
