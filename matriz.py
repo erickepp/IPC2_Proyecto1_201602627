@@ -91,6 +91,14 @@ class Matriz:
                     g.edge(str(j - 1) + str(i), str(j) + str(i))
         g.view()
 
+    @property
+    def nombre(self):
+        return self.__nombre
+
+    @property
+    def datos(self):
+        return self.__datos
+
 
 def generar_frecuencia(elem):
     frecuencia = Lista()
