@@ -19,11 +19,11 @@ def generar_frecuencia(elem):
 
 def generar_binaria(frecuencia):
     binaria = Lista()
-    for fina in frecuencia:
+    for fila in frecuencia:
         fila_binaria = Lista()
         for columna in fila:
             if columna != 0:
-                fila_binaria.agregar_al_final(1):
+                fila_binaria.agregar_al_final(1)
             else:
                 fila_binaria.agregar_al_final(columna)
         binaria.agregar_al_final(fila_binaria)
