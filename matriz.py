@@ -8,6 +8,10 @@ class Matriz:
         self.__filas = 0
         self.__columnas = 0
 
+    def __calcular_dimensiones(self):
+        self.__filas = self.__datos.get_tamanio()
+        self.__columnas = self.__datos.get_valor(0).get_tamanio()
+
     def __generar_grupos(self, frecuencia, binaria):
         posiciones = Lista()
         filas = binaria.get_tamanio()
@@ -34,6 +38,7 @@ class Matriz:
                     suma += tupla.get_valor(i)
                 nueva_tupla.agregar_al_final(suma)
             self.__datos.agregar_al_final(nueva_tupla)
+        self.__calcular_dimensiones()
 
 
 def generar_frecuencia(elem):
