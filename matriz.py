@@ -8,6 +8,21 @@ class Matriz:
         self.__filas = 0
         self.__columnas = 0
 
+    def __generar_grupos(self, frecuencia, binaria):
+        posiciones = Lista()
+        filas = binaria.get_tamanio()
+        for i in range(filas):
+            if not (i in posiciones):
+                grupo = Lista()
+                posiciones.agregar_al_final(i)
+                grupo.agregar_al_final(frecuencia.get_valor(i))
+                cadena = ''.join(map(str, binaria.get_valor(i)))
+                for j in range(i + 1, filas):
+                    if cadena == ''.join(map(str, binaria.get_valor(j))):
+                        posiciones.agregar_al_final(j)
+                        grupo.agregar_al_final(frecuencia.get_valor(j))
+                self.__grupos.agregar_al_final(grupo)
+
 
 def generar_frecuencia(elem):
     frecuencia = Lista()
