@@ -57,3 +57,13 @@ def validar_contenido_dato(elem, nombre):
             print(f'El dato "{subelem.text}" no es válido\n')
             return False
     return True
+
+def validar_dimensiones_matriz(elem, nombre):
+    filas = int(elem.attrib['n'])
+    columnas = int(elem.attrib['m'])
+    dimensiones = filas * columnas
+    if len(elem) != dimensiones:
+        print(f'Error: <matriz nombre="{nombre}" n="{filas}" m="{columnas}">')
+        print('La matriz no cumple con las dimensiones (n, m)\n')
+        return False
+    return True
