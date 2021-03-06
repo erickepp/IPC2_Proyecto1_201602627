@@ -49,3 +49,11 @@ def validar_atributos_dato(elem, nombre):
             print('El atributo "y" no es válido\n')
             return False
     return True
+
+def validar_contenido_dato(elem, nombre):
+    for subelem in elem:
+        if not subelem.text.isdigit():
+            print(f'Error: <matriz nombre="{nombre}">')
+            print(f'El dato "{subelem.text}" no es válido\n')
+            return False
+    return True
