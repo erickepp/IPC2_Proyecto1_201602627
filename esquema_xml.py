@@ -35,3 +35,17 @@ def validar_etiquetas_dato(elem, nombre):
             print('La ubicación de la etiqueta no es válida\n')
             return False
     return True
+
+def validar_atributos_dato(elem, nombre):
+    for subelem in elem:
+        fila = subelem.attrib['x']
+        columna = subelem.attrib['y']
+        if not fila.isdigit():
+            print(f'Error: <matriz nombre="{nombre}"><dato x="{fila}">')
+            print('El atributo "x" no es válido\n')
+            return False
+        elif not columna.isdigit():
+            print(f'Error: <matriz nombre="{nombre}"><dato y="{columna}">')
+            print('El atributo "y" no es válido\n')
+            return False
+    return True
