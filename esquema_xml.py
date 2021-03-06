@@ -36,7 +36,7 @@ def validar_etiquetas_dato(elem, nombre):
             return False
     return True
 
-def validar_atributos_dato(elem, nombre):
+def validar_atributos_datos(elem, nombre):
     for subelem in elem:
         fila = subelem.attrib['x']
         columna = subelem.attrib['y']
@@ -50,7 +50,7 @@ def validar_atributos_dato(elem, nombre):
             return False
     return True
 
-def validar_contenido_dato(elem, nombre):
+def validar_contenido_datos(elem, nombre):
     for subelem in elem:
         if not subelem.text.isdigit():
             print(f'Error: <matriz nombre="{nombre}">')
@@ -66,4 +66,20 @@ def validar_dimensiones_matriz(elem, nombre):
         print(f'Error: <matriz nombre="{nombre}" n="{filas}" m="{columnas}">')
         print('La matriz no cumple con las dimensiones (n, m)\n')
         return False
+    return True
+
+def validar_rango_dimensiones(elem, nombre):
+    filas = int(elem.attrib['n'])
+    columnas = int(elem.attrib['m'])
+    for subelem in elem:
+        fila = int(subelem.attrib['x'])
+        columna = int(subelem.attrib['y'])
+        if not fila in range(1, filas + 1):
+            print(f'Error: <matriz nombre="{nombre}"><dato x="{fila}">')
+            print('El atributo "x" está fuera de rango\n')
+            return False
+        elif not columna in range(1, columnas + 1):
+            print(f'Error: <matriz nombre="{nombre}"><dato x="{columna}">')
+            print('El atributo "y" está fuera de rango\n')
+            return False
     return True
