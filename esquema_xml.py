@@ -27,3 +27,11 @@ def validar_atributos_matriz(elem, nombre):
         print('El atributo "m" no es válido\n')
         return False
     return True
+
+def validar_etiquetas_dato(elem, nombre):
+    for subelem in elem:
+        if subelem.tag != 'dato':
+            print(f'Error: <{subelem.tag} nombre="{nombre}">')
+            print('La ubicación de la etiqueta no es válida\n')
+            return False
+    return True
