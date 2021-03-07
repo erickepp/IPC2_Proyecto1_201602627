@@ -83,3 +83,23 @@ def validar_rango_dimensiones(elem, nombre):
             print('El atributo "y" está fuera de rango\n')
             return False
     return True
+
+def validar(elem, matrices):
+    nombre = elem.attrib['nombre']
+    if not validar_etiqueta_matriz(elem, nombre):
+        return False
+    elif not validar_nombre_matriz(matrices, nombre):
+        return False
+    elif not validar_atributos_matriz(matrices, nombre):
+        return False
+    elif not validar_etiquetas_dato(matrices, nombre):
+        return False
+    elif not validar_atributos_datos(matrices, nombre):
+        return False
+    elif not validar_contenido_datos(matrices, nombre):
+        return False
+    elif not validar_dimensiones_matriz(matrices, nombre):
+        return False
+    elif not validar_rango_dimensiones(matrices, nombre):
+        return False
+    return True
