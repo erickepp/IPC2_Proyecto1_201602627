@@ -63,3 +63,17 @@ def mostrar_datos_estudiante():
     print('> Introducción a la Programación y Computación 2 Sección "C"')
     print('> Ingeniería en Ciencias y Sistemas')
     print('> 4to Semestre')
+
+def generar_grafica():
+    if not matrices.is_empty():
+        print('Matrices')
+        for matriz in matrices:
+            print('    ' + matriz.nombre)
+        nombre = input('\nIngrese el nombre de la matriz: ')
+        for matriz in matrices:
+            if matriz.nombre == nombre:
+                print('> Generando gráfica...')
+                matriz.generar_grafica()
+                break
+        else:
+            print('La matriz no existe')
