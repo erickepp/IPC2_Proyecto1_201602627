@@ -4,7 +4,7 @@ from matriz import Matriz
 from matriz import generar_frecuencia
 from matriz import generar_binaria
 import xml.etree.ElementTree as ET
-import esquema_xml, time
+import esquema_xml, time, sys
 
 tree = None
 matrices = ListaCircular()
@@ -77,3 +77,33 @@ def generar_grafica():
                 break
         else:
             print('La matriz no existe')
+
+def menu():
+    while True:
+        print('Menú Principal')
+        print('    1.Cargar archivo')
+        print('    2.Procesar archivo')
+        print('    3.Escribir archivo salida')
+        print('    4.Mostrar datos del estudiante')
+        print('    5.Generar gráfica')
+        print('    6.Salida\n')
+
+        opcion = input('Ingrese una opción: ')
+        print('\n----------------------------------------------------\n')
+
+        if opcion == '1':
+            cargar_archivo()
+        elif opcion == '2':
+            procesar_archivo()
+        elif opcion == '3':
+            escribir_archivo_salida()
+        elif opcion == '4':
+            mostrar_datos_estudiante()
+        elif opcion == '5':
+            generar_grafica()
+        elif opcion == '6':
+            sys.exit()
+        else:
+            print('La opción es incorrecta')
+
+        print('\n----------------------------------------------------\n')
