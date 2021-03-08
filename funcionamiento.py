@@ -56,3 +56,10 @@ def escribir_archivo_salida():
                 break
         else:
             print('La matriz no existe')
+
+def mostrar_datos_estudiante():
+    print('> Erick Estuardo Patzan Polanco')
+    print('> 201602627')
+    print('> Introducción a la Programación y Computación 2 Sección "C"')
+    print('> Ingeniería en Ciencias y Sistemas')
+    print('> 4to Semestre')
