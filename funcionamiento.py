@@ -40,3 +40,19 @@ def procesar_archivo():
                 matriz.sumar_tuplas(frecuencia, binaria)
                 posicion += 1
         time.sleep(1)
+
+def escribir_archivo_salida():
+    if not matrices.is_empty():
+        print('Matrices')
+        for matriz in matrices:
+            print('    ' + matriz.nombre)
+        nombre = input('\nIngrese el nombre de la matriz: ')
+        for matriz in matrices:
+            if matriz.nombre == nombre:
+                path = input('Escribir una ruta específica: ')
+                if path:
+                    matriz.generar_xml(path)
+                    print('Se escribio el archivo con éxito')
+                break
+        else:
+            print('La matriz no existe')
