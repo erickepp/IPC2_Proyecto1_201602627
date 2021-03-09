@@ -26,7 +26,7 @@ class ListaCircular:
             if posicion == 0:
                 return self.__inicio.valor
             else:
-                aux = self.__inicio.valor
+                aux = self.__inicio
                 for i in range(posicion):
                     aux = aux.siguiente
                 return aux.valor

@@ -13,7 +13,7 @@ def validar_nombre_matriz(matrices, nombre):
             print(f'Error: <matriz nombre="{nombre}">')
             print('La matriz ya existe\n')
             return False
-        return True
+    return True
 
 def validar_atributos_matriz(elem, nombre):
     filas = elem.attrib['n']
@@ -90,16 +90,16 @@ def validar(elem, matrices):
         return False
     elif not validar_nombre_matriz(matrices, nombre):
         return False
-    elif not validar_atributos_matriz(matrices, nombre):
+    elif not validar_atributos_matriz(elem, nombre):
         return False
-    elif not validar_etiquetas_dato(matrices, nombre):
+    elif not validar_etiquetas_dato(elem, nombre):
         return False
-    elif not validar_atributos_datos(matrices, nombre):
+    elif not validar_atributos_datos(elem, nombre):
         return False
-    elif not validar_contenido_datos(matrices, nombre):
+    elif not validar_contenido_datos(elem, nombre):
         return False
-    elif not validar_dimensiones_matriz(matrices, nombre):
+    elif not validar_dimensiones_matriz(elem, nombre):
         return False
-    elif not validar_rango_dimensiones(matrices, nombre):
+    elif not validar_rango_dimensiones(elem, nombre):
         return False
     return True
